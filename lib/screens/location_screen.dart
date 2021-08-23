@@ -47,12 +47,22 @@ class _LocationScreenState extends State<LocationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    int dayOrNight = 2;
+    if (DateTime.now().hour > 18 || DateTime.now().hour < 5) {
+      dayOrNight = 1;
+    } else {
+      dayOrNight = 2;
+    }
+
     return WillPopScope(
       onWillPop: () async {
         return false;
       },
       child: Scaffold(
+        extendBodyBehindAppBar: true,
         appBar: AppBar(
+          backgroundColor: Color(0x8B000000),
+          elevation: 0,
           leading: IconButton(
             icon: const Icon(Icons.location_on),
             onPressed: () async {
@@ -83,7 +93,7 @@ class _LocationScreenState extends State<LocationScreen> {
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('images/location_background.jpg'),
+              image: AssetImage('images/background$dayOrNight.jpg'),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
                   Colors.white.withOpacity(0.8), BlendMode.dstATop),
