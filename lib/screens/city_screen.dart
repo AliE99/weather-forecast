@@ -11,6 +11,17 @@ class _CityScreenState extends State<CityScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(
+            Icons.keyboard_backspace,
+            size: 50.0,
+          ),
+          onPressed: () async {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -22,18 +33,8 @@ class _CityScreenState extends State<CityScreen> {
         child: SafeArea(
           child: Column(
             children: <Widget>[
-              Align(
-                alignment: Alignment.topLeft,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    color: Colors.white,
-                    size: 50.0,
-                  ),
-                ),
+              SizedBox(
+                height: 100.0,
               ),
               Container(
                 padding: EdgeInsets.all(20.0),
