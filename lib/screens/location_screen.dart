@@ -47,11 +47,11 @@ class _LocationScreenState extends State<LocationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    int dayOrNight = 2;
+    int dayOrNight = 1;
     if (DateTime.now().hour > 18 || DateTime.now().hour < 5) {
-      dayOrNight = 1;
-    } else {
       dayOrNight = 2;
+    } else {
+      dayOrNight = 1;
     }
 
     return WillPopScope(
