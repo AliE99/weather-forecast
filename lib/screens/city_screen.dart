@@ -11,15 +11,21 @@ class _CityScreenState extends State<CityScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(
-            Icons.keyboard_backspace,
-            size: 50.0,
+      extendBodyBehindAppBar: true,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60.0),
+        child: AppBar(
+          backgroundColor: Color(0x8B000000),
+          elevation: 0,
+          leading: IconButton(
+            icon: const Icon(
+              Icons.keyboard_backspace,
+              size: 40.0,
+            ),
+            onPressed: () async {
+              Navigator.pop(context);
+            },
           ),
-          onPressed: () async {
-            Navigator.pop(context);
-          },
         ),
       ),
       body: Container(

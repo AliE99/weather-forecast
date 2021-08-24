@@ -60,35 +60,51 @@ class _LocationScreenState extends State<LocationScreen> {
       },
       child: Scaffold(
         extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          backgroundColor: Color(0x8B000000),
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.location_on),
-            onPressed: () async {
-              var weatherData = await WeatherModel().getLocationWeather();
-              updateUI(weatherData);
-            },
-          ),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.location_city_outlined),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(60.0),
+          child: AppBar(
+            backgroundColor: Color(0x8B000000),
+            elevation: 0,
+            leading: IconButton(
+              icon: const Icon(
+                Icons.location_on,
+                size: 35.0,
+              ),
               onPressed: () async {
-                var typedCityName = await Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => CityScreen(),
-                  ),
-                );
-                if (typedCityName != null) {
-                  var weatherData =
-                      await weatherModel.getCityWeather(typedCityName);
-                  updateUI(weatherData);
-                }
+                var weatherData = await WeatherModel().getLocationWeather();
+                updateUI(weatherData);
               },
             ),
-          ],
-          title: Text('هواشناسی مازندران'),
+            actions: [
+              IconButton(
+                icon: const Icon(
+                  Icons.location_city_outlined,
+                  size: 35.0,
+                ),
+                onPressed: () async {
+                  var typedCityName = await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CityScreen(),
+                    ),
+                  );
+                  if (typedCityName != null) {
+                    var weatherData =
+                        await weatherModel.getCityWeather(typedCityName);
+                    updateUI(weatherData);
+                  }
+                },
+              ),
+            ],
+            title: Center(
+              child: Text(
+                'هواشناسی مازندران',
+                style: TextStyle(
+                  fontSize: 25.0,
+                ),
+              ),
+            ),
+          ),
         ),
         body: Container(
           decoration: BoxDecoration(
